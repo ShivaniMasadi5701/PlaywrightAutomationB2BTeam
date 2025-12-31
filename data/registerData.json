@@ -1,0 +1,30 @@
+{
+  "user": {
+    "name": "Shivani",
+    "title": "Mrs.",
+    "password": "Shivani",
+    "dob": {
+      "day": "5",
+      "month": "7",
+      "year": "2002"
+    },
+    "address": {
+      "firstName": "Shivani",
+      "lastName": "Patel",
+      "street": "Hyderabad",
+      "country": "India",
+      "state": "Telangana",
+      "city": "Hyderabad",
+      "zipcode": "500038",
+      "mobile": "9874563210"
+    },
+    "assertions": {
+      "pageTitle": "Automation Exercise",
+      "newUserLabel": "New User Signup!",
+      "accountInfoLabel": "ENTER ACCOUNT INFORMATION",
+      "accountCreatedLabel": "Account Created!",
+      "accountDeletedLabel": "Account Deleted!",
+      "emailAddressAlreadyExistErrorText": "Email Address already exist!"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+    "validUser": {
+        "email": "shivanipatel.57@gmail.com",
+        "password": "Shivani@5701"
+    },
+    "invalidEmailValidPassword": {
+        "email": "shivani.5701@@gmail.com",
+        "password": "Shivani@5701"
+    },
+    "validEmailInvalidPassword": {
+        "email": "shivanpatel.57@gmail.com",
+        "password": "Shivani@"
+    },
+    "invalidEmailInValidPassword": {
+        "email": "shivanipatel.57@@gmail.com",
+        "password": "Shivani"
+    },
+    "assertions": {
+        "loggedinAsLabel": "Logged in as ",
+        "loginToYourAccountLabel": "Login to your account",
+        "InvalidLoginErrorText": "Your email or password is incorrect!"
+    }
+}

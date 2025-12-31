@@ -1,0 +1,17 @@
+{
+    "formData":{
+        "name":"Shivani",
+        "email": "shivanipatel.57@gmail.com",
+        "subject": "Appreciation",
+        "message" : "This demo testing website is an excellent platform for QA learning and practice. It covers essential functionalities like form validations, navigation, and user flows, making it ideal for manual and automation testing. Truly helpful for improving testing skills.",
+        "filePath" :"tests/resources/contactUs.png"
+    },
+
+    "asserations":{
+        "contactUsLabel":" Contact Us",
+        "getInTouchLabel": "Get In Touch",
+        "successText":"Success! Your details have been submitted successfully."
+    }
+
+
+}
