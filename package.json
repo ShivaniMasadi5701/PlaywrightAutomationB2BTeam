@@ -3,7 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "RegisterTest": "npx playwright test tests/RegisterTest.spec.ts --debug",
+    "LoginTest": "npx playwright test tests/LoginTest.spec.ts",
+    "RegisterLoginDeleteTest": "npx playwright test tests/RegisterLoginDeleteAcc.spec.ts",
+    "ContactUsTest":"npx playwright test tests/ContactUsTest.spec.ts",
+    "ProductsTest":"npx playwright test tests/ProductsTest.spec.ts",
+    "zip": "bestzip allure-report.zip allure-report" ,
+    "allureReports":"npx allure generate allure-results --clean && npx allure open allure-report "
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
