@@ -11,6 +11,8 @@ export class ProductsPage {
     readonly lblRs:Locator;
     readonly lblQuantity:Locator;
     readonly btnAddToCart;
+    readonly txtSearchProduct;
+    readonly btnSearchIcon;
 
 
 
@@ -24,6 +26,8 @@ export class ProductsPage {
         this.lblRs=page.locator("//span[contains(text(),'Rs')]");
         this.lblQuantity=page.getByLabel('Quantity:');
         this.btnAddToCart=page.getByRole('button', { name: 'Add to cart' });
+        this.txtSearchProduct=page.getByPlaceholder('Search Product');
+          this.btnSearchIcon=page.locator('#submit_search');
 
     }
 
@@ -75,6 +79,22 @@ export class ProductsPage {
 
     getAddToCartButton() : Locator{
         return this.btnAddToCart;
+    }
+
+    getSearchProductTextbox(): Locator{
+        return this.txtSearchProduct;
+    }
+    async enterSearchProduct(productName:string) : Promise<void>{
+        await this.txtSearchProduct.fill(productName);
+
+    }
+
+    getSearchIcon(): Locator{
+        return this.btnSearchIcon;
+    }
+
+    async clickOnSearchIcon() : Promise<void>{
+        await this.btnSearchIcon.click();
     }
 
 }

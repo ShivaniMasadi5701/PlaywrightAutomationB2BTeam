@@ -29,17 +29,32 @@ test.describe("Products Page script", () => {
 
         // const productLabel= await productsPage.getProduct().innerText();
         // console.log("ProductLabel:"+productLabel);
-        
+
         await productsPage.clickOnFirstProduct();
 
         const viewProductLabel = await productsPage.getViewProductLabel(firstProductLabel);
-        console.log("ProductLabel:"+viewProductLabel);
+        console.log("ProductLabel:" + viewProductLabel);
 
         await expect(productsPage.getProductByName(firstProductLabel)).toBeVisible();
         expect(firstProductLabel.trim()).toBe(viewProductLabel.trim());
         await expect(productsPage.getRupeesLabel()).toBeVisible();
         await expect(productsPage.getAddToCartButton()).toBeVisible();
+    });
 
+    test("Verify search product", async ({ page }) => {
+
+        await expect(page).toHaveTitle(registerData.user.assertions.pageTitle);
+        await expect(registerPage.getHomeButton()).toBeVisible();
+
+        await productsPage.clickOnProductsButton();
+
+        await expect(productsPage.getAllProductsLabel()).toHaveText('All Products');
+        await expect(productsPage.getProductsList()).toBeVisible();
+        await expect(productsPage.getSearchProductTextbox()).toBeVisible();
+        await expect(productsPage.getSearchIcon()).toBeVisible();
+
+        await productsPage.enterSearchProduct("Winter Top");
+        await productsPage.clickOnSearchIcon();
 
     });
 });

@@ -110,7 +110,7 @@ test.describe.serial('E2E Flow - Register,Login,Logout,Delete Account Tests', ()
 
         await expect(registerPage.getLogoutAccountButton()).toBeVisible();
         await expect(registerPage.getDeleteAccountButton()).toBeVisible();
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
     });
 
     test("Logout Test", async ({ page }) => {
