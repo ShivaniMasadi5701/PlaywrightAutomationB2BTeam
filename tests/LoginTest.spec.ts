@@ -20,7 +20,7 @@ test.describe('Login Tests', () => {
 
     test("Verify Login with Invalid Email and Valid Password", async ({ page }) => {
 
-        await expect(page).toHaveTitle(registerData.user.assertions.pageTitle);
+        await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
         await expect(registerPage.getHomeButton()).toBeVisible();
 
         await registerPage.clickOnSignUpLoginButton();
@@ -34,7 +34,7 @@ test.describe('Login Tests', () => {
 
     test("Verify Login with  Valid Email and Invalid Password", async ({ page }) => {
 
-        await expect(page).toHaveTitle(registerData.user.assertions.pageTitle);
+        await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
         await expect(registerPage.getHomeButton()).toBeVisible();
 
         await registerPage.clickOnSignUpLoginButton();
@@ -50,7 +50,7 @@ test.describe('Login Tests', () => {
 
     test(" Verify Login with Invalid Email and Invalid Password", async ({ page }) => {
 
-        await expect(page).toHaveTitle(registerData.user.assertions.pageTitle);
+        await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
         await expect(registerPage.getHomeButton()).toBeVisible();
 
         await registerPage.clickOnSignUpLoginButton();
@@ -67,7 +67,7 @@ test.describe('Login Tests', () => {
         console.log("*Email" + env.loginEmail);
         console.log("*password" + env.loginPassword);
 
-        await expect(page).toHaveTitle(registerData.user.assertions.pageTitle);
+        await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
         await expect(registerPage.getHomeButton()).toBeVisible();
 
         await registerPage.clickOnSignUpLoginButton();

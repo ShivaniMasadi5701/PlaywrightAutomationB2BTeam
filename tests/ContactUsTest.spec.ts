@@ -22,7 +22,7 @@ test.describe("ContactUs Form Test Scripts", () => {
 
     test("Verify Valid ContactUs Form", async ({ page }) => {
 
-        await expect(page).toHaveTitle(registerData.user.assertions.pageTitle);
+        await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
         await expect(registerPage.getHomeButton()).toBeVisible();
         await expect(contactUsPage.getContactUsButton()).toBeVisible();
 

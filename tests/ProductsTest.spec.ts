@@ -16,7 +16,7 @@ test.describe("Products Page script", () => {
 
     test("Verify All Products and View Product Detail Page", async ({ page }) => {
 
-        await expect(page).toHaveTitle(registerData.user.assertions.pageTitle);
+        await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
         await expect(registerPage.getHomeButton()).toBeVisible();
 
         await productsPage.clickOnProductsButton();
@@ -43,7 +43,7 @@ test.describe("Products Page script", () => {
 
     test("Verify search product", async ({ page }) => {
 
-        await expect(page).toHaveTitle(registerData.user.assertions.pageTitle);
+        await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
         await expect(registerPage.getHomeButton()).toBeVisible();
 
         await productsPage.clickOnProductsButton();

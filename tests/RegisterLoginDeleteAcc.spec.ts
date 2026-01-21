@@ -22,15 +22,15 @@ test.describe.serial('E2E Flow - Register,Login,Logout,Delete Account Tests', ()
 
     test('Valid Register Test', async ({ page }) => {
 
-        await expect(page).toHaveTitle(registerData.user.assertions.pageTitle);
+        await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
         await expect(registerPage.getHomeButton()).toBeVisible();
 
         await registerPage.clickOnSignUpLoginButton();
 
-        await expect(registerPage.getNewUserSignupLabel()).toHaveText(registerData.user.assertions.newUserLabel);
+        await expect(registerPage.getNewUserSignupLabel()).toHaveText(registerData.register.assertions.newUserLabel);
 
-        await registerPage.enterName(registerData.user.name);
-        await registerPage.enterEmail(registerData.user.name); // using name as prefix and generating email
+        await registerPage.enterName(registerData.register.name);
+        await registerPage.enterEmail(registerData.register.name); // using name as prefix and generating email
 
         const enteredName = await registerPage.getEnteredName();
         // 🔹 Print in TEST console
@@ -43,42 +43,42 @@ test.describe.serial('E2E Flow - Register,Login,Logout,Delete Account Tests', ()
         await registerPage.clickOnSignupButton();
 
         await expect(registerPage.getEnterAccountInformationLabel()).toBeVisible();
-        // await expect(registerPage.lblEnterAccInfo).toHaveText(registerData.user.assertions.accountInfoLabel);
+        // await expect(registerPage.lblEnterAccInfo).toHaveText(registerData.register.assertions.accountInfoLabel);
         // await expect(registerPage.lblEnterAccInfo).toContainText('ACCOUNT INFORMATION');
         //  await expect(registerPage.lblEnterAccInfo).toHaveText(/ENTER ACCOUNT INFORMATION/i);
-        await registerPage.selectTitle(registerData.user.title);
+        await registerPage.selectTitle(registerData.register.title);
         await expect(registerPage.getMrsRadio()).toBeChecked();
         await expect(registerPage.getMrRadio()).not.toBeChecked();
         await expect(registerPage.getEnteredNameText()).toHaveValue(`${enteredName}`);
         await expect(registerPage.getEnteredEmailText()).toHaveValue(`${enteredEmail}`);
 
-        await registerPage.enterPassword(registerData.user.password);
+        await registerPage.enterPassword(registerData.register.password);
 
         await registerPage.selectDateOfBirth(
-            registerData.user.dob.day,
-            registerData.user.dob.month,
-            registerData.user.dob.year
+            registerData.register.dob.day,
+            registerData.register.dob.month,
+            registerData.register.dob.year
         );
 
-        await expect(registerPage.getDayDropdown()).toHaveValue(registerData.user.dob.day);
-        await expect(registerPage.getMonthDropdown()).toHaveValue(registerData.user.dob.month);
-        await expect(registerPage.getYearDropdown()).toHaveValue(registerData.user.dob.year);
+        await expect(registerPage.getDayDropdown()).toHaveValue(registerData.register.dob.day);
+        await expect(registerPage.getMonthDropdown()).toHaveValue(registerData.register.dob.month);
+        await expect(registerPage.getYearDropdown()).toHaveValue(registerData.register.dob.year);
         await expect(registerPage.getAddressInformationLabel()).toBeVisible();
 
-        await registerPage.enterFirstName(registerData.user.address.firstName);
-        await registerPage.enterLastName(registerData.user.address.lastName);
-        await registerPage.enterAddress(registerData.user.address.street);
-        await registerPage.selectCountry(registerData.user.address.country);
-        await registerPage.enterState(registerData.user.address.state);
-        await registerPage.enterCity(registerData.user.address.city);
-        await registerPage.enterZipcode(registerData.user.address.zipcode);
-        await registerPage.enterMobileNumber(registerData.user.address.mobile);
+        await registerPage.enterFirstName(registerData.register.address.firstName);
+        await registerPage.enterLastName(registerData.register.address.lastName);
+        await registerPage.enterAddress(registerData.register.address.street);
+        await registerPage.selectCountry(registerData.register.address.country);
+        await registerPage.enterState(registerData.register.address.state);
+        await registerPage.enterCity(registerData.register.address.city);
+        await registerPage.enterZipcode(registerData.register.address.zipcode);
+        await registerPage.enterMobileNumber(registerData.register.address.mobile);
 
-        DataHolder.setCredentials(enteredEmail, registerData.user.password);
+        DataHolder.setCredentials(enteredEmail, registerData.register.password);
 
         await registerPage.clickOnCreateAccountButton();
 
-        await expect(registerPage.getAccountCreatedLabel()).toHaveText(registerData.user.assertions.accountCreatedLabel);
+        await expect(registerPage.getAccountCreatedLabel()).toHaveText(registerData.register.assertions.accountCreatedLabel);
 
         await registerPage.clickOnContinueButton();
 
@@ -92,7 +92,7 @@ test.describe.serial('E2E Flow - Register,Login,Logout,Delete Account Tests', ()
 
     test("ValidLogin Test", async ({ page }) => {
 
-        await expect(page).toHaveTitle(registerData.user.assertions.pageTitle);
+        await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
         await expect(registerPage.getHomeButton()).toBeVisible();
 
         await registerPage.clickOnSignUpLoginButton();
@@ -115,7 +115,7 @@ test.describe.serial('E2E Flow - Register,Login,Logout,Delete Account Tests', ()
 
     test("Logout Test", async ({ page }) => {
 
-        await expect(page).toHaveTitle(registerData.user.assertions.pageTitle);
+        await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
         await expect(registerPage.getHomeButton()).toBeVisible();
 
         await registerPage.clickOnSignUpLoginButton();
@@ -142,7 +142,7 @@ test.describe.serial('E2E Flow - Register,Login,Logout,Delete Account Tests', ()
 
     test("Delete Account Test", async ({ page }) => {
 
-        await expect(page).toHaveTitle(registerData.user.assertions.pageTitle);
+        await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
         await expect(registerPage.getHomeButton()).toBeVisible();
 
         await registerPage.clickOnSignUpLoginButton();
@@ -163,7 +163,7 @@ test.describe.serial('E2E Flow - Register,Login,Logout,Delete Account Tests', ()
 
         await registerPage.clickOnDeleteAccountButton();
 
-        await expect(registerPage.getAccountDeletedLabel()).toHaveText(registerData.user.assertions.accountDeletedLabel);
+        await expect(registerPage.getAccountDeletedLabel()).toHaveText(registerData.register.assertions.accountDeletedLabel);
 
     });
 });
