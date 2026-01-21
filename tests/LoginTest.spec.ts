@@ -4,6 +4,7 @@ import { LoginPage } from '../pages/LoginPage';
 import registerData from '../data/registerData.json';
 import loginData from '../data/loginData.json';
 import { env } from '../config/env';
+import { APP_CONSTANTS } from "./resources/constants";
 
 
 test.describe('Login Tests', () => {
@@ -67,7 +68,7 @@ test.describe('Login Tests', () => {
         console.log("*Email" + env.loginEmail);
         console.log("*password" + env.loginPassword);
 
-        await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
+        await expect(page).toHaveTitle(APP_CONSTANTS.LOGIN_TITLE);
         await expect(registerPage.getHomeButton()).toBeVisible();
 
         await registerPage.clickOnSignUpLoginButton();
