@@ -82,7 +82,4 @@ test.describe('Login Tests', () => {
 
         await expect(registerPage.getLogoutAccountButton()).toBeVisible();
     });
-
-
-
 });

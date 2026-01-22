@@ -12,6 +12,7 @@ export class ContactUsPage {
     readonly fileInput : Locator;
     readonly btnSubmit: Locator;
     readonly lblSuccessText : Locator;
+    
 
     constructor(page: Page) {
         this.page = page;
