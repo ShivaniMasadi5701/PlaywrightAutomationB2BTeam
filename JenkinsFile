@@ -1,0 +1,54 @@
+pipeline {
+    agent any
+
+    tools {
+        nodejs 'node-lts'
+    }
+
+    environment {
+        CI = 'true'
+        BASE_URL = credentials('BASE_URL')
+        LOGIN_EMAIL_ADDRESS = credentials('LOGIN_EMAIL_ADDRESS')
+        LOGIN_PASSWORD = credentials('LOGIN_PASSWORD')
+    }
+
+    stages {
+
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/ShivaniMasadi5701/PlaywrightAutomationB2BTeam.git'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm ci'
+            }
+        }
+
+        stage('Install Playwright Browsers') {
+            steps {
+                sh 'npx playwright install --with-deps'
+            }
+        }
+
+        stage('Run Playwright Tests') {
+            steps {
+                sh 'npx playwright test'
+            }
+        }
+    }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
+        }
+        failure {
+            echo '❌ Tests Failed'
+        }
+        success {
+            echo '✅ Tests Passed'
+        }
+    }
+}
