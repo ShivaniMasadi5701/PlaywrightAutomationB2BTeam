@@ -2,6 +2,7 @@ import { test, expect, Page } from '@playwright/test';
 import { ProductsPage } from '../pages/ProductsPage';
 import { RegisterPage } from '../pages/RegisterPage';
 import registerData from '../data/registerData.json';
+import { profile } from 'node:console';
 
 test.describe("Products Page script", () => {
 
@@ -23,20 +24,13 @@ test.describe("Products Page script", () => {
 
        // await expect(productsPage.getAllProductsLabel()).toHaveText('All Products');
         await expect(productsPage.getProductsList()).toBeVisible();
+       
+        const selectedProduct = await productsPage.clickOnSelectProduct("Winter Top");
+        console.log("selectedProduct:"+selectedProduct);
+        const viewedproductLabel = await productsPage.getViewedProductLabel(selectedProduct);
+        console.log("After viewing Product Label:"+viewedproductLabel);
 
-        const firstProductLabel = await productsPage.getFirstProductLabel();
-        console.log(`****FirstLabel :${firstProductLabel}`);
-
-        // const productLabel= await productsPage.getProduct().innerText();
-        // console.log("ProductLabel:"+productLabel);
-
-        await productsPage.clickOnFirstProduct();
-
-        const viewProductLabel = await productsPage.getViewProductLabel(firstProductLabel);
-        console.log("ProductLabel:" + viewProductLabel);
-
-        await expect(productsPage.getProductByName(firstProductLabel)).toBeVisible();
-        expect(firstProductLabel.trim()).toBe(viewProductLabel.trim());
+        await expect(viewedproductLabel.trim()).toBe(selectedProduct.trim());
         await expect(productsPage.getRupeesLabel()).toBeVisible();
         await expect(productsPage.getAddToCartButton()).toBeVisible();
     });
@@ -55,6 +49,9 @@ test.describe("Products Page script", () => {
 
         await productsPage.enterSearchProduct("Winter Top");
         await productsPage.clickOnSearchIcon();
+
+        await expect(productsPage.getSearchedProductsLabel()).toHaveText('Searched Products');
+        await expect(productsPage.getSearchedProductLabel("Winter Top")).toBeVisible();
 
     });
 });
