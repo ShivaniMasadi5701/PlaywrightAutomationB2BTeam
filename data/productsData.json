@@ -1,0 +1,12 @@
+{
+  "products": {
+    "product1": "Blue Top",
+     "product2": "Men Tshirt",
+     "product3": "Sleeveless Dress"
+    },
+
+    "assertions": {
+      "ProductAdded": "Your product has been added to cart.",
+      "cartSize": "1"
+    }
+}
