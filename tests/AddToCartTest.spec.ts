@@ -9,7 +9,6 @@ import productsData from '../data/productsData.json';
 
 test.describe('Login Tests', () => {
 
-  
     let registerPage: RegisterPage;
     let loginPage: LoginPage;
     let cartPage: CartPage;
@@ -22,26 +21,6 @@ test.describe('Login Tests', () => {
 
     });
 
-    // test("Verify Login with Valid Email and Valid Password", async ({ page }) => {
-
-    //     console.log("*Email" + env.loginEmail);
-    //     console.log("*password" + env.loginPassword);
-
-    //     await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
-    //     await expect(registerPage.getHomeButton()).toBeVisible();
-
-    //     await registerPage.clickOnSignUpLoginButton();
-
-    //     await expect(loginPage.getLoginToYourAccountLabel())
-    //         .toHaveText(loginData.assertions.loginToYourAccountLabel);
-
-    //     await loginPage.enterLoginEmailAddress(env.loginEmail);
-    //     await loginPage.enterPassword(env.loginPassword);
-    //     await loginPage.clickOnLoginButton();
-
-    //     await expect(registerPage.getLogoutAccountButton()).toBeVisible();
-    // });
-
     test("Verify add products in cart", async ({ page }) => {
 
         await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
@@ -53,14 +32,10 @@ test.describe('Login Tests', () => {
         const addedText = await cartPage.getAddedToCartText();
         expect(addedText).toBe(productsData.assertions.ProductAdded);
 
-        const isVisible = await cartPage.verifyViewCartButtonVisible();
-        expect(isVisible).toBe(true);
+       await expect(cartPage.getViewCartButton()).toBeVisible();
+       await cartPage.clickOnViewCartButton();
 
-        await cartPage.clickOnViewCartButton();
-
-        expect(await cartPage.verifyCartItemsSize()).toBe(productsData.assertions.cartSize)
+       expect((await cartPage.verifyCartItemsSize()).toString()).toBe(productsData.assertions.cartSize)
         
-
-       // await cartPage.clickOnContinueShopingButton();
     });
 });
