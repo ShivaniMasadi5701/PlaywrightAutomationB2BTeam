@@ -29,7 +29,7 @@ export class CartPage {
         await this.btnAddToCart.click();
     }
 
-    async clickOnSelectProduct(productName:String): Promise<void>{
+    async clickOnSelectProduct(productName:string): Promise<void>{
         const count = await this.lblProductName.count();
 console.log("@@@@@@@@@@@@@@@@Products count@@@@@@@@@@@"+ count);
 
@@ -58,6 +58,10 @@ console.log("@@@@@@@@@@@@@@@@Products count@@@@@@@@@@@"+ count);
 
     getViewCartButton(): Locator{
         return (this.btnViewCart);
+    }
+
+    getContinueShopingButton(): Locator{
+        return (this.btnContinueShoping);
     }
 
     async verifyCartItemsSize(): Promise<number>{

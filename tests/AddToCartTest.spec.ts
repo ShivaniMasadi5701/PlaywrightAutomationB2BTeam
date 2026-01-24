@@ -6,6 +6,7 @@ import loginData from '../data/loginData.json';
 import { env } from '../config/env';
 import { CartPage } from "../pages/CartPage";
 import productsData from '../data/productsData.json';
+import { clear } from "node:console";
 
 test.describe('Login Tests', () => {
 
@@ -21,13 +22,13 @@ test.describe('Login Tests', () => {
 
     });
 
-    test("Verify add products in cart", async ({ page }) => {
+    test("Verify add single product to cart", async ({ page }) => {
 
         await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
         await expect(registerPage.getHomeButton()).toBeVisible();
 
         await cartPage.clickOnProductsButton();
-        await cartPage.clickOnSelectProduct(productsData.products.product1);
+        await cartPage.clickOnSelectProduct(productsData.product.product1);
 
         const addedText = await cartPage.getAddedToCartText();
         expect(addedText).toBe(productsData.assertions.ProductAdded);
@@ -35,7 +36,35 @@ test.describe('Login Tests', () => {
        await expect(cartPage.getViewCartButton()).toBeVisible();
        await cartPage.clickOnViewCartButton();
 
-       expect((await cartPage.verifyCartItemsSize()).toString()).toBe(productsData.assertions.cartSize)
+       expect((await cartPage.verifyCartItemsSize()).toString()).toBe(productsData.assertions.cartSize);
+    });
+
+    test("Verify add multiple products to cart", async ({ page }) => {
+
+        await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
+        await expect(registerPage.getHomeButton()).toBeVisible();
+
+        await cartPage.clickOnProductsButton();
+
+        for(let i=0;i<productsData.products.length;i++){
+            
+            console.log("Products"+ productsData.products[i]);
+
+            await cartPage.clickOnSelectProduct(productsData.products[i]);
+
+            const addedText = await cartPage.getAddedToCartText();
+            expect(addedText).toBe(productsData.assertions.ProductAdded);
+
+            await expect(cartPage.getViewCartButton()).toBeVisible();
+
+            await expect(cartPage.getContinueShopingButton()).toBeVisible();
+
+            if(i<productsData.products.length-1){
+                await cartPage.clickOnContinueShopingButton();
+            }
+        }
+            await cartPage.clickOnViewCartButton();
+            expect(await cartPage.verifyCartItemsSize()).toBe(productsData.products.length)
         
     });
 });
