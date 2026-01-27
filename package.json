@@ -8,10 +8,10 @@
     "RegisterTest": "npx playwright test tests/RegisterTest.spec.ts --debug",
     "LoginTest": "npx playwright test tests/LoginTest.spec.ts",
     "RegisterLoginDeleteTest": "npx playwright test tests/RegisterLoginDeleteAcc.spec.ts",
-    "ContactUsTest":"npx playwright test tests/ContactUsTest.spec.ts",
-    "ProductsTest":"npx playwright test tests/ProductsTest.spec.ts",
-    "zip": "bestzip allure-report.zip allure-report" ,
-    "allureReports":"npx allure generate allure-results --clean && npx allure open allure-report "
+    "ContactUsTest": "npx playwright test tests/ContactUsTest.spec.ts",
+    "ProductsTest": "npx playwright test tests/ProductsTest.spec.ts",
+    "zip": "bestzip allure-report.zip allure-report",
+    "allureReports": "npx allure generate allure-results --clean && npx allure open allure-report "
   },
   "keywords": [],
   "author": "",
@@ -23,5 +23,17 @@
   },
   "dependencies": {
     "dotenv": "^17.2.3"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShivaniMasadi5701/PlaywrightAutomationB2BTeam.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ShivaniMasadi5701/PlaywrightAutomationB2BTeam/issues"
+  },
+  "homepage": "https://github.com/ShivaniMasadi5701/PlaywrightAutomationB2BTeam#readme"
 }
