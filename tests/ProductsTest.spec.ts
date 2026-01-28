@@ -28,7 +28,7 @@ test.describe("Products Page script", () => {
        // await expect(productsPage.getAllProductsLabel()).toHaveText('All Products');
         await expect(productsPage.getProductsList()).toBeVisible();
        
-        const selectedProduct = await productsPage.clickOnSelectProduct(productsData.products.product4);
+        const selectedProduct = await productsPage.clickOnSelectProduct(productsData.product.product2);
         console.log("selectedProduct:"+selectedProduct);
         const viewedproductLabel = await productsPage.getViewedProductLabel(selectedProduct);
         console.log("After viewing Product Label:"+viewedproductLabel);
@@ -50,11 +50,11 @@ test.describe("Products Page script", () => {
         await expect(productsPage.getSearchProductTextbox()).toBeVisible();
         await expect(productsPage.getSearchIcon()).toBeVisible();
 
-        await productsPage.enterSearchProduct(productsData.products.product4);
+        await productsPage.enterSearchProduct(productsData.product.product2);
         await productsPage.clickOnSearchIcon();
 
         await expect(productsPage.getSearchedProductsLabel()).toHaveText(productsData.assertions.SearchedProductsLabel);
-        await expect(productsPage.getSearchedProductLabel(productsData.products.product4)).toBeVisible();
+        await expect(productsPage.getSearchedProductLabel(productsData.product.product2)).toBeVisible();
 
     });
 });
