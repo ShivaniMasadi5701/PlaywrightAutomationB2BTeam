@@ -122,7 +122,6 @@ export class RegisterPage {
         return this.lblEnterAccInfo;
     }
 
-
     async selectTitle(title: string): Promise<void> {
         if (title === 'Mr') {
             await this.radioMr.check();
