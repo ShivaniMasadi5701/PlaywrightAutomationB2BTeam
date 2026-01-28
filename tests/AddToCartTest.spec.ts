@@ -18,7 +18,7 @@ test.describe('AddToCart Test Scripts', () => {
         loginPage = new LoginPage( page );
         cartPage = new CartPage( page );
         await registerPage.navigate();
-        console.log("Before each navigate method");
+        console.log("BeforeEach method Running");
     });
 
     test("Verify add single product to cart", async ({ page }) => {
