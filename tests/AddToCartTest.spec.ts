@@ -21,7 +21,7 @@ test.describe('Login Tests', () => {
         console.log("@@@@@@@@@@@@@@@@@@@Before each navigate method");
     });
 
-    test.("Verify add single product to cart", async ({ page }) => {
+    test("Verify add single product to cart", async ({ page }) => {
 
         await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
         await expect(registerPage.getHomeButton()).toBeVisible();
