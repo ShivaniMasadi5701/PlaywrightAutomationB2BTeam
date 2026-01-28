@@ -31,13 +31,13 @@ export class CartPage {
 
     async clickOnSelectProduct(productName:string): Promise<void>{
         const count = await this.lblProductName.count();
-        console.log("@@@@@@@@@@@@@@@@Products count@@@@@@@@@@@"+ count);
+        console.log("**Products count:"+ count);
 
         for (let i = 0; i < count; i++) {
-            console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@Prodt Name for Single item"+await this.lblProductName.nth(i).textContent());
+            console.log("Product Name for Single item"+await this.lblProductName.nth(i).textContent());
             const currentProductName =await this.lblProductName.nth(i).textContent();
             if(currentProductName?.trim() === productName){
-                console.log("@@@@@@@@@@@@@@@@actual product name"+currentProductName);
+                console.log("Actual Product name"+currentProductName);
                 await this.lblProductName.nth(i).hover();
                 await this.btnAddToCart.nth(i).click();
             break;
