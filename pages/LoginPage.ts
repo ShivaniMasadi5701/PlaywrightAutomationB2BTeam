@@ -39,4 +39,10 @@ export class LoginPage {
      getInvalidLoginErrorText(): Locator {
         return this.lblInvalidLoginError;
     }
+
+    async login(email: string,password: string): Promise<void>{
+        await this.txtEmailAddress.fill(email);
+        await this.txtPassword.fill(password);
+        await this.btnLogin.click();
+    }
 }

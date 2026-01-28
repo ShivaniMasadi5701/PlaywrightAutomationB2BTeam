@@ -6,7 +6,6 @@ import loginData from '../data/loginData.json';
 import { env } from '../config/env';
 import { CartPage } from "../pages/CartPage";
 import productsData from '../data/productsData.json';
-import { clear } from "node:console";
 
 test.describe('Login Tests', () => {
 
@@ -18,11 +17,11 @@ test.describe('Login Tests', () => {
         registerPage = new RegisterPage(page);
         loginPage = new LoginPage( page );
         cartPage = new CartPage( page );
-        await registerPage.navigate();
-
+        registerPage.navigate();
+        console.log("@@@@@@@@@@@@@@@@@@@Before each navigate method");
     });
 
-    test("Verify add single product to cart", async ({ page }) => {
+    test.("Verify add single product to cart", async ({ page }) => {
 
         await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
         await expect(registerPage.getHomeButton()).toBeVisible();
@@ -33,8 +32,8 @@ test.describe('Login Tests', () => {
         const addedText = await cartPage.getAddedToCartText();
         expect(addedText).toBe(productsData.assertions.ProductAdded);
 
-       await expect(cartPage.getViewCartButton()).toBeVisible();
-       await cartPage.clickOnViewCartButton();
+        await expect(cartPage.getViewCartButton()).toBeVisible();
+        await cartPage.clickOnViewCartButton();
 
        expect((await cartPage.verifyCartItemsSize()).toString()).toBe(productsData.assertions.cartSize);
     });
@@ -47,7 +46,7 @@ test.describe('Login Tests', () => {
         await cartPage.clickOnProductsButton();
 
         for(let i=0;i<productsData.products.length;i++){
-            
+
             console.log("Products"+ productsData.products[i]);
 
             await cartPage.clickOnSelectProduct(productsData.products[i]);
@@ -56,7 +55,6 @@ test.describe('Login Tests', () => {
             expect(addedText).toBe(productsData.assertions.ProductAdded);
 
             await expect(cartPage.getViewCartButton()).toBeVisible();
-
             await expect(cartPage.getContinueShopingButton()).toBeVisible();
 
             if(i<productsData.products.length-1){
@@ -68,3 +66,7 @@ test.describe('Login Tests', () => {
         
     });
 });
+
+
+
+
