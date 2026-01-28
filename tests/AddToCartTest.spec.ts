@@ -17,7 +17,7 @@ test.describe('AddToCart Test Scripts', () => {
         registerPage = new RegisterPage(page);
         loginPage = new LoginPage( page );
         cartPage = new CartPage( page );
-        registerPage.navigate();
+        await registerPage.navigate();
         console.log("Before each navigate method");
     });
 
