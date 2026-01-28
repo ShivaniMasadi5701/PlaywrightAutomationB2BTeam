@@ -15,7 +15,7 @@ export class AdRemovelPage {
     }
 
     async clickonAdCloseButton(): Promise<void>{
-        const isAdVisible = await this.lblAd.isVisible();
+        const isAdVisible = await this.btnClose.isVisible();
         if(isAdVisible){
             this.btnClose.click();
         }

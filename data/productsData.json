@@ -2,11 +2,15 @@
   "products": {
     "product1": "Blue Top",
      "product2": "Men Tshirt",
-     "product3": "Sleeveless Dress"
+     "product3": "Sleeveless Dress",
+     "product4" : "Winter Top"
+     
     },
 
     "assertions": {
       "ProductAdded": "Your product has been added to cart.",
-      "cartSize": "1"
+      "cartSize": "1",
+      "SearchedProductsLabel" :"Searched Products"
+
     }
 }
