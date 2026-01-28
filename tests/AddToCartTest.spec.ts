@@ -17,15 +17,23 @@ test.describe('Login Tests', () => {
         registerPage = new RegisterPage(page);
         loginPage = new LoginPage( page );
         cartPage = new CartPage( page );
-        registerPage.navigate();
+        await registerPage.navigate();
         console.log("@@@@@@@@@@@@@@@@@@@Before each navigate method");
     });
 
-    test.("Verify add single product to cart", async ({ page }) => {
+    test("Verify add single product to cart", async ({ page }) => {
 
         await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
         await expect(registerPage.getHomeButton()).toBeVisible();
 
+        await cartPage.clickOnCartButton();
+
+        while (await cartPage.verifyCartItemsSize() > 0) {
+            await cartPage.clickOnDeleteCartProducts();
+        }
+
+        await expect(cartPage.getEmptyCartMessageVisible()).toBeVisible();
+        
         await cartPage.clickOnProductsButton();
         await cartPage.clickOnSelectProduct(productsData.product.product1);
 
@@ -39,9 +47,16 @@ test.describe('Login Tests', () => {
     });
 
     test("Verify add multiple products to cart", async ({ page }) => {
-
+g
         await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
         await expect(registerPage.getHomeButton()).toBeVisible();
+
+        await cartPage.clickOnCartButton();
+
+        while (await cartPage.verifyCartItemsSize() > 0) {
+            await cartPage.clickOnDeleteCartProducts();
+        }
+        await expect(cartPage.getEmptyCartMessageVisible()).toBeVisible();
 
         await cartPage.clickOnProductsButton();
 
@@ -52,6 +67,7 @@ test.describe('Login Tests', () => {
             await cartPage.clickOnSelectProduct(productsData.products[i]);
 
             const addedText = await cartPage.getAddedToCartText();
+            
             expect(addedText).toBe(productsData.assertions.ProductAdded);
 
             await expect(cartPage.getViewCartButton()).toBeVisible();

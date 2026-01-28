@@ -10,6 +10,7 @@ test('Login and save auth state', async ({ page }) => {
     await registerPage.clickOnSignUpLoginButton();
     await loginPage.login(env.loginEmail,env.loginPassword);
     await expect(registerPage.getLogoutAccountButton()).toBeVisible();
+    
     //await page.context().storageState({ path :'auth.json' });
     
 })

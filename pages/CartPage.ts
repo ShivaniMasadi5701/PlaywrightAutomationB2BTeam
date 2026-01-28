@@ -9,16 +9,22 @@ export class CartPage {
      readonly btnContinueShoping : Locator;
      readonly btnViewCart : Locator;
      readonly tableCartItems : Locator;
+     readonly btnDeleteCartItem: Locator;
+     readonly btnCart: Locator;
+     readonly emptyCartMessage:Locator
   
     constructor(page:Page){
       this.page = page;
-      this.btnProducts=page.getByText('Products');
+      this.btnProducts=page.locator("//a[@href='/products' and contains(normalize-space(),'Products')]");
       this.btnAddToCart=page.locator("//div[@class='productinfo text-center']//following-sibling::a");
       this.lblProductName=page.locator("//div[@class='productinfo text-center']//following-sibling::p");
       this.lblAddedToCart=page.locator("//div[@class='modal-body']//p[text()='Your product has been added to cart.']");
       this.btnContinueShoping=page.getByText('Continue Shopping');
       this.btnViewCart = page.locator("//u[text()='View Cart']");
       this.tableCartItems = page.locator(".table#cart_info_table tbody tr");
+      this.btnDeleteCartItem = page.locator('.cart_quantity_delete');
+      this.btnCart = page.getByRole('link',{name : 'Cart'});
+      this.emptyCartMessage = this.page.locator('#empty_cart');
     }
 
     async clickOnProductsButton(): Promise<void>{
@@ -67,6 +73,27 @@ export class CartPage {
 
     async verifyCartItemsSize(): Promise<number>{
         return await this.tableCartItems.count();
+    }
+
+    // async clickOnDeleteCartProducts(): Promise<void>{
+    //     const count = await this.btnDeleteCartItem.count();
+    //     for(let i=0; i < count;i++) {
+    //         await this.btnDeleteCartItem.first().click();
+    //     }
+    // }
+
+    async clickOnDeleteCartProducts(): Promise<void> {
+            while (await this.btnDeleteCartItem.count() > 0) {
+                    await this.btnDeleteCartItem.first().click();
+            }
+    }
+
+    async clickOnCartButton(): Promise<void>{
+        await this.btnCart.click();
+    }
+
+    getEmptyCartMessageVisible(): Locator{
+        return (this.emptyCartMessage);
     }
 
 
