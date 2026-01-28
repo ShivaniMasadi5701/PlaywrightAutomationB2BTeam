@@ -4,7 +4,7 @@ import { LoginPage } from '../pages/LoginPage';
 import registerData from '../data/registerData.json';
 import loginData from '../data/loginData.json';
 import { env } from '../config/env';
-import { CartPage } from "../pages/CartPage";
+import { CartPage } from "../pages/AddToCartPage";
 import productsData from '../data/productsData.json';
 
 test.describe('AddToCart Test Scripts', () => {
@@ -18,7 +18,7 @@ test.describe('AddToCart Test Scripts', () => {
         loginPage = new LoginPage( page );
         cartPage = new CartPage( page );
         registerPage.navigate();
-        console.log("@@@@@@@@@@@@@@@@@@@Before each navigate method");
+        console.log("Before each navigate method");
     });
 
     test("Verify add single product to cart", async ({ page }) => {
