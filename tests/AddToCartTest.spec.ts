@@ -7,7 +7,7 @@ import { env } from '../config/env';
 import { CartPage } from "../pages/CartPage";
 import productsData from '../data/productsData.json';
 
-test.describe('Login Tests', () => {
+test.describe('AddToCart Test Scripts', () => {
 
     let registerPage: RegisterPage;
     let loginPage: LoginPage;
