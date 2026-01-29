@@ -4,10 +4,10 @@ import { LoginPage } from '../pages/LoginPage';
 import registerData from '../data/registerData.json';
 import loginData from '../data/loginData.json';
 import { env } from '../config/env';
-import { CartPage } from "../pages/CartPage";
+import { CartPage } from "../pages/AddToCartPage";
 import productsData from '../data/productsData.json';
 
-test.describe('Login Tests', () => {
+test.describe('AddToCart Test Scripts', () => {
 
     let registerPage: RegisterPage;
     let loginPage: LoginPage;
@@ -18,7 +18,7 @@ test.describe('Login Tests', () => {
         loginPage = new LoginPage( page );
         cartPage = new CartPage( page );
         await registerPage.navigate();
-        console.log("@@@@@@@@@@@@@@@@@@@Before each navigate method");
+        console.log("Before each navigate method");
     });
 
     test("Verify add single product to cart", async ({ page }) => {
@@ -47,7 +47,7 @@ test.describe('Login Tests', () => {
     });
 
     test("Verify add multiple products to cart", async ({ page }) => {
-g
+
         await expect(page).toHaveTitle(registerData.register.assertions.pageTitle);
         await expect(registerPage.getHomeButton()).toBeVisible();
 

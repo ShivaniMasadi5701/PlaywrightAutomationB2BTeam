@@ -31,6 +31,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   
   use: {
+
     headless: true,
   //headless: !!process.env.CI,
   baseURL: process.env.BASE_URL!,
@@ -40,20 +41,29 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-  video: 'retain-on-failure'
+  video: 'retain-on-failure',
+
+  permissions: [],
+    extraHTTPHeaders: {
+      'sec-fetch-dest': 'document',
+    },
   },
+
+  expect: {
+  timeout: 15000,
+},
 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'setup',
-      testMatch: /AuthSetup\.spec\.ts/,
-    },
+    // {
+    //   name: 'setup',
+    //   testMatch: /AuthSetup\.spec\.ts/,
+    // },
     {
       name: 'chromium',
-      dependencies: ['setup'],
+      //dependencies: ['setup'],
       use: { ...devices['Desktop Chrome'],
-        storageState: 'auth.json',
+        //storageState: 'auth.json',
        },
     },
 
